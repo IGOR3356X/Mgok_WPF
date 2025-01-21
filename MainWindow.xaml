@@ -1,0 +1,21 @@
+﻿<Window x:Class="SteamDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SteamDesktop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200">
+    <Grid>
+        <Button x:Name="ButtonGey" Height="40" Width="200" Margin="300,10,300,384" Content="Заполнить" Click="ButtonGey_Click"/>
+        <DataGrid x:Name="DataGridGay" Height="300" Width="600" AutoGenerateColumns="False" ItemsSource="{Binding Source=User}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="50" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Width="80" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер телефона" Width="120" Binding="{Binding Path=TelephonNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя пользоватетя" Width="100" Binding="{Binding Path=Username}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Роль" Width="80" Binding="{Binding Path=Role.Name}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
