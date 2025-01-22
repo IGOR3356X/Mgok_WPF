@@ -23,7 +23,7 @@ namespace SteamDesktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IUserServices _userServices;
+        private readonly IUserServices _userServices;
         public MainWindow(IUserServices userServices)
         {
             _userServices = userServices;
@@ -32,8 +32,15 @@ namespace SteamDesktop
 
         private async void ButtonGey_Click(object sender, RoutedEventArgs e)
         {
-            DataGridGay.ItemsSource = await _userServices.GetAllAsync();
-            //sb.Append($"Id = {baybay.Id}, TelephoneNumber= {baybay.TelephonNumber}, Name= {baybay.Name}, RoleId= {baybay.RoleId}, Name= {baybay.Username}");
+            try
+            {
+                DataGridGay.ItemsSource = await _userServices.GetAllAsync();
+                //sb.Append($"Id = {baybay.Id}, TelephoneNumber= {baybay.TelephonNumber}, Name= {baybay.Name}, RoleId= {baybay.RoleId}, Name= {baybay.Username}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
     }

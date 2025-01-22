@@ -11,9 +11,12 @@
         <DataGrid x:Name="DataGridGay" Height="300" Width="600" AutoGenerateColumns="False" ItemsSource="{Binding Source=User}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="50" Binding="{Binding Path=Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Имя" Width="80" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Номер телефона" Width="120" Binding="{Binding Path=TelephonNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Имя пользоватетя" Width="100" Binding="{Binding Path=Username}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Width="80" Binding="{Binding Path=FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" Width="80" Binding="{Binding Path=Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя пользоватетя" Width="100" Binding="{Binding Path=UserName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Логин" Width="120" Binding="{Binding Path=Login}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пароль" Width="120" Binding="{Binding Path=Password}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фото" Width="120" Binding="{Binding Path=Photo}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Роль" Width="80" Binding="{Binding Path=Role.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
