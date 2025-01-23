@@ -38,7 +38,7 @@ namespace SteamDesktop
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
             // Запуск главного окна
-            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            var mainWindow = _serviceProvider.GetRequiredService<AuthorizationWindow>();
             mainWindow.Show();
         }
 
@@ -51,7 +51,7 @@ namespace SteamDesktop
             services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddScoped<IUserServices, UserServices>();
             services.AddSingleton<MainWindow>();
+            services.AddSingleton<AuthorizationWindow>();
         }
     }
-
 }

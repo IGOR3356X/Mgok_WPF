@@ -8,5 +8,6 @@ namespace SteamDesktop.Contracts
 {
     public record IdContract(int id);
 
-    internal record Gg(int bb);
+    public record AuthorizationContract(string Login,string Password);
+
 }

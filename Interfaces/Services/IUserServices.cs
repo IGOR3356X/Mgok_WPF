@@ -12,6 +12,7 @@ namespace SteamDesktop.Interfaces.Services
     {
         public Task<List<User>> GetAllAsync();
         public Task<User> GetByIdAsync(IdContract id);
+        public Task<bool> AuthorizeUser(AuthorizationContract data);
         public Task<User> CreateAsync();
         public Task<User> UpdateAsync();
         public Task<User> DeleteAsync(IdContract id);
