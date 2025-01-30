@@ -40,11 +40,7 @@ namespace SteamDesktop.Services
         {
             var gg = await _repository.GetQueryable()
                 .FirstOrDefaultAsync(x => x.Login == data.Login && x.Password == data.Password);
-            if (gg == null)
-            {
-                return false;
-            }
-            return true;
+            return gg != null;
         }
 
         public Task<User> CreateAsync()

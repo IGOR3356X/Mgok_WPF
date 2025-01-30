@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
     <Grid>
+        <Button x:Name="GetRedis" Height="50" Width="200" Margin="300,10,300,520" Content="Вывести редис" Click="BtnGetRedis"></Button>
         <Button x:Name="ButtonGey" Height="40" Width="200" Margin="300,10,300,384" Content="Заполнить" Click="ButtonGey_Click"/>
         <DataGrid x:Name="DataGridGay" Height="300" Width="600" AutoGenerateColumns="False" ItemsSource="{Binding Source=User}">
             <DataGrid.Columns>

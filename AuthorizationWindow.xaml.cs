@@ -12,7 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SteamDesktop.Interfaces;
 using SteamDesktop.Interfaces.Services;
+using SteamDesktop.RedisConnector;
 
 namespace SteamDesktop
 {
@@ -22,25 +24,28 @@ namespace SteamDesktop
     public partial class AuthorizationWindow : Window
     {
         private readonly IUserServices _userServices;
-        public AuthorizationWindow(IUserServices userServices)
+        private IRedisConnection _redisConnect;
+        public AuthorizationWindow(IUserServices userServices, IRedisConnection redisConnect)
         {
             _userServices = userServices;
+            _redisConnect = redisConnect;
             InitializeComponent();
         }
 
         private async void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(TxbLogin.Text) && !string.IsNullOrWhiteSpace(TxbPassword.Text))
+            if (!string.IsNullOrWhiteSpace(TxbLogin.Text) && !string.IsNullOrWhiteSpace(TxbPassword.Password))
             {
-                AuthorizationContract contract = new AuthorizationContract(TxbLogin.Text, TxbPassword.Text);
+                AuthorizationContract contract = new AuthorizationContract(TxbLogin.Text, TxbPassword.Password);
                 bool isAuthorizeUser = await _userServices.AuthorizeUser(contract);
                 if (isAuthorizeUser)
                 {
                     MessageBox.Show("Вы успешно авторизовались"
                         , "Ура"
                         , MessageBoxButton.OK);
-                    MainWindow main = new MainWindow(_userServices);
+                    MainWindow main = new MainWindow(_userServices,_redisConnect);
                     main.Show();
+                    this.Close();   
                 }
                 else
                 {

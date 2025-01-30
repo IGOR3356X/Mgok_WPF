@@ -11,6 +11,7 @@ using SteamDesktop.Context;
 using SteamDesktop.Contracts;
 using SteamDesktop.Interfaces;
 using SteamDesktop.Interfaces.Services;
+using SteamDesktop.RedisConnector;
 using SteamDesktop.Reposiotory;
 using SteamDesktop.Services;
 
@@ -52,6 +53,7 @@ namespace SteamDesktop
             services.AddScoped<IUserServices, UserServices>();
             services.AddSingleton<MainWindow>();
             services.AddSingleton<AuthorizationWindow>();
+            services.AddSingleton<IRedisConnection,RedisConnect>();
         }
     }
 }

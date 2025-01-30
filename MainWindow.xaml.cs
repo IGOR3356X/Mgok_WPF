@@ -7,14 +7,19 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using StackExchange.Redis;
 using SteamDesktop.Context;
+using SteamDesktop.Interfaces;
 using SteamDesktop.Interfaces.Services;
 using SteamDesktop.Models;
+using SteamDesktop.RedisConnector;
 
 namespace SteamDesktop
 {
@@ -24,9 +29,11 @@ namespace SteamDesktop
     public partial class MainWindow : Window
     {
         private readonly IUserServices _userServices;
-        public MainWindow(IUserServices userServices)
+        private IRedisConnection _redisConnect;
+        public MainWindow(IUserServices userServices, IRedisConnection redisConnect)
         {
             _userServices = userServices;
+            _redisConnect = redisConnect;
             InitializeComponent();
         }
 
@@ -43,5 +50,11 @@ namespace SteamDesktop
             }
         }
 
+        private async void BtnGetRedis(object sender, RoutedEventArgs e)
+        {
+            // await _redisConnect.getConnection().StringSetAsync("myKey", "Hello, Redis!");
+            var value = await _redisConnect.getConnection().StringGetAsync("myKey");
+            MessageBox.Show(value);
+        }
     }
 }

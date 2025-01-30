@@ -9,7 +9,7 @@
         Background="MidnightBlue">
     <Grid>
         <TextBox x:Name="TxbLogin" Height="30" Width="200" Margin="300,129,300,255" Text="NowiyJordan"></TextBox>
-        <TextBox x:Name="TxbPassword" Height="30" Width="200" Margin="300,187,300,217" Text="Password"></TextBox>
+        <PasswordBox x:Name="TxbPassword" Height="30" Width="200" Margin="300,187,300,217" Password="Password"></PasswordBox>
         <Button x:Name="LoginBtn" Content="Войти" Height="40" Width="150" Margin="325,251,325,143" Click="LoginBtn_Click"></Button>
     </Grid>
 </Window>
